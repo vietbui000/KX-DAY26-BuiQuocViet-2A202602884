@@ -14,7 +14,7 @@ from google.genai import types
 
 client = genai.Client()
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.1-flash-lite"
 
 SYSTEM_INSTRUCTION = (
     "Bạn là trợ lý thời tiết thân thiện, trả lời bằng tiếng Việt tự nhiên. "
@@ -31,7 +31,8 @@ get_weather_declaration = types.FunctionDeclaration(
         type=types.Type.OBJECT,
         properties={
             "city": types.Schema(
-                type=types.Type.STRING, description="Tên thành phố"
+                type=types.Type.STRING,
+                description="Tên thành phố bằng tiếng Việt có dấu, ví dụ: Hà Nội, Hồ Chí Minh, Đà Nẵng",
             )
         },
         required=["city"],
